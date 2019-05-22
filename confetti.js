@@ -61,7 +61,10 @@ for(var i = 0; i < confettiCount; i++){
   confettis.push(new Confetti(randomInt(0,maxDepth)));
 }
 
+let isConfetti = false;
+
 function confDraw(delta){
+  if(!isConfetti) return;
   ctxf.clearRect(0,0,width, height);
   ctxb.clearRect(0,0,width, height);
   ctxf.save();
@@ -78,4 +81,8 @@ function confDraw(delta){
     }
   }
   ctxb.filter = "blur(2px)";
+}
+
+function startConfetti(){
+  isConfetti = true;
 }

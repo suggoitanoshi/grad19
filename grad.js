@@ -136,7 +136,7 @@ class TypeText{
     this.timePerLine = 3;
     this.active = false;
     this.started = false;
-    this.onFinish = function(){};
+    this.onFinish = startConfetti;
     this.finished = false;
     this.exit = false;
     this.entrance = false;
