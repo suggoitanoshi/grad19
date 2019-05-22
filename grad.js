@@ -119,7 +119,7 @@ class TypeText{
     }
     xhr.open("GET", `puisi/${puisi}.txt`, true);
     xhr.send();
-    this.finalLine = "Happy Graduation!\nSee you!";
+    this.finalLine = "Congraduations! See you!";
     this.fontSize = 50;
     if(width < height){
       this.fontSize = 26;
