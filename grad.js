@@ -89,7 +89,7 @@ class DisplayImg{
     staticctx.drawImage(core, 0, 0);
   }
 }
-let imgcount = 9;
+let imgcount = 11;
 let imgs = [];
 var lasti, curr;
 for(var i = 0; i < imgcount; i++){
