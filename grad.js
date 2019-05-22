@@ -129,11 +129,11 @@ class TypeText{
     this.currentChar = 0;
     this.fadeTime = 1;
     this.currentFadeTime = 0;
-    this.linePersistenceDelay = 1;
+    this.linePersistenceDelay = .6;
     this.currentPersistence = 0;
     this.delayPerLine = 1+this.linePersistenceDelay+this.fadeTime;
     this.time = 0;
-    this.timePerLine = 3;
+    this.timePerLine = 2;
     this.active = false;
     this.started = false;
     this.onFinish = startConfetti;
