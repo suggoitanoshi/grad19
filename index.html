@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Happy Graduation!</title>
+    <style>
+      html, body{
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+      }
+      body{
+        background: #35363a;
+      }
+      .confetti{
+        position: absolute;
+        left: 0;
+        top: 0;
+        pointer-events: none;
+      }
+      #confetti-back{
+        z-index: -1;
+      }
+      #confetti-front{
+        z-index: 999;
+      }
+      .content{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: .5em;
+      }
+      #content{
+        background: none;
+      }
+      #static-content{
+        background: rgba(190, 190, 190, .5);
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="confetti-back" class="confetti"></canvas>
+    <canvas id="static-content" class="content"></canvas>
+    <canvas id="content" class="content"></canvas>
+    <canvas id="text" class="content"></canvas>
+    <canvas id="confetti-front" class="confetti"></canvas>
+    <script type="text/javascript">
+      function randomInt(min, max){ // both inclusive
+        return min + Math.floor(Math.random() * (max-min+1));
+      }
+      function randomFloat(min, max){ // inclusive, max exclusive
+        return min + (Math.random() * (max-min));
+      }
+
+      function lerp(min, max, val){
+        return (min*(1-val)+max*val);
+      }
+
+      function coserp(min, max, val){
+        let v2 = 1-Math.cos(val*Math.PI)/2
+        return (min*(1-v2)+max*v2);
+      }
+    </script>
+    <script type="text/javascript" src="confetti.js"></script>
+    <script type="text/javascript" src="grad.js"></script>
+    <script type="text/javascript">
+      window.onresize = () => {
+        setSize();
+        gradResize();
+      }
+
+      let last = performance.now();
+      let delta = 0;
+      function superDraw(){
+        delta = performance.now() - last;
+        last = performance.now();
+        confDraw(delta);
+        gradDraw(delta);
+        textDraw(delta)
+        window.requestAnimationFrame(superDraw);
+      }
+      window.requestAnimationFrame(superDraw);
+    </script>
+  </body>
+</html>
